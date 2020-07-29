@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 防止用户双击缩放 -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <!-- http请求体的header中有一个referrer字段，用来表示发起http请求的源地址信息，
+  这个referrer信息是可以省略但是不可修改的，就是说你只能设置是否带上这个referrer信息
+  ，不能定制referrer里面的值。服务器端在拿到这个referrer值后就可以进行相关的处理，
+  比如图片资源，可以通过referrer值判断请求是否来自本站，
+  若不是则返回403或者重定向返回其他信息，从而实现图片的防盗链。
+  上面出现403就是因为，请求的是别人服务器上的资源，
+  但把自己的referrer信息带过去了，被对方服务器拦截返回了403。
+  在前端可以通过meta来设置referrer policy(来源策略)，具体可以设置哪些值以及对应的结果参考这里。
+  所以针对上面的403情况的解决方法，就是把referrer设置成no-referrer，
+  这样发送请求不会带上referrer信息，对方服务器也就无法拦截了。 -->
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="stylesheet" href="animate.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css" />
+</head>
+<style>
+  * {
+    font-weight: 100;
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: #000000 !important;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    background-color: transparent;
+    background-image: none;
+    transition: background-color 50000s ease-in-out 0s;
+    /* //背景色透明  生效时长  过渡效果  启用时延迟的时间 */
+  }
+
+  input {
+    background-color: transparent;
+  }
+</style>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
